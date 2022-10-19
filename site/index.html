@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="ESP Light">
+    <meta name="apple-mobile-web-app-title" content="ESP Light">
+    <meta name="theme-color" content="#171717">
+    <meta name="msapplication-navbutton-color" content="#171717">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" sizes="512x512" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="favicon.png">
+
+    <meta http-equiv="Cache-control" content="public">
+
+    <title>ESP Гирлянда</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">ESP cLight</div>
+    <div class="page">
+        <div class="block_header">
+            <h2>Настройки</h2>
+        </div>
+        <div class="block_content">
+            <ul class="settings">
+                <li class="mode">
+                    <button id="powerOnOff">ВЫКЛЮЧИТЬ</button>
+                </li>
+                <li class="setting">
+                    <label for="colorSelector">Выбор цвета:</label>
+                    <input type="color" name="colorSelector" id="colorSelector">
+                </li>
+                <li class="setting">
+                    <label for="brightness">Яркость:</label>
+                    <input type="range" id="brightness" name="brightness" min="0" max="255" value="255">
+                </li>
+                <li class="setting">
+                    <label for="speed">Скорость режима:</label>
+                    <input type="range" id="speed" name="speed" min="1" max="100" value="90">
+                </li>
+                <li class="setting">
+                    <label for="gliterOnOff">Вспышки:</label>
+                    <input type="checkbox" name="gliterOnOff" id="gliterOnOff">
+                </li>
+                <li class="setting">
+                    <label for="candleOnOff">Свечи:</label>
+                    <input type="checkbox" name="candleOnOff" id="candleOnOff">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page">
+        <div class="block_header">
+            <h2>Режимы</h2>
+        </div>
+        <div class="block_content">
+            <ul class="settings" id="modes">
+                <li class="mode">
+                    <button id="autochange">Автопереключение режимов</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page">
+        <div class="block_header">
+            <h2>Система</h2>
+        </div>
+        <div class="block_content">
+            <ul class="settings">
+                <li class="setting">
+                    <label for="ssid">SSID:</label>
+                    <input type="text" name="ssid" id="ssid">
+                </li>
+                <li class="setting">
+                    <label for="pass">Пароль:</label>
+                    <input type="password" name="pass" id="pass">
+                </li>
+                <li class="setting">
+                    <label for="countLed">Количество LED:</label>
+                    <input type="text" name="countLed" id="countLed">
+                </li>
+                <li class="setting">
+                    <label for="currentIP">Текущий IP:</label>
+                    <input type="text" name="currentIP" id="currentIP" disabled>
+                </li>
+                <li class="mode">
+                    <button id="saveSystem">Сохранить</button>
+                    <button id="resetSystem">Перезагрузить</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="btn settings"></div>
+        <div class="btn modes"></div>
+        <div class="btn system"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
