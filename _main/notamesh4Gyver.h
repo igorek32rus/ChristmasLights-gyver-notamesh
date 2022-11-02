@@ -37,18 +37,10 @@
 
 #include "mainPage.h"
 
-// #ifndef STASSID
-// #define STASSID "Xep_BaM_a_He_uHTepHeT"
-// #define STAPSK  "453525251505"
-// #endif
-
-// const char* ssid = STASSID;
-// const char* password = STAPSK;
 
 AsyncWebServer server(80);
 
 void handleRoot(AsyncWebServerRequest *request) {
-  // server.send(200, "text/html", MAIN_page);
   request->send_P(200, "text/html", MAIN_page);
 }
 
@@ -78,7 +70,7 @@ void handleRoot(AsyncWebServerRequest *request) {
 //********************************************************************************
 //                          Настройка FastLED
 
-#define MAX_LEDS      50        // Максимальное количество светодиодов,  очень влияет на память 
+#define MAX_LEDS      254        // Максимальное количество светодиодов,  очень влияет на память 
 
 #define COLOR_ORDER   GRB         //Очередность цвета светодиодов  RGB или GRB
 #define CHIPSET       WS2812B     //Тип микросхемы светодиодов в гирлянде

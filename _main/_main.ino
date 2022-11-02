@@ -6,6 +6,9 @@
 //  Проект делается на чистом энтузиазме и в свободное время
 //  Яндекс кошелек     410011655180757
 
+#include "wifiSettings.h"     // настройки wifi
+#include "notamesh4Gyver.h"
+
 /*------------------------------------------------------------------------------------------
 --------------------------------------- Начало переменным ---------------------------------
 ------------------------------------------------------------------------------------------*/
@@ -151,9 +154,6 @@ TBlendType currentBlending = LINEARBLEND;                     // NOBLEND or LINE
   #define INITMODE  0                                           // с этого режима будет старт, по умолчанию 0 (старт с - с черного цвета)
   #define INITLEN   MAX_LEDS                                    // Размер гирлянды при старте
   #define INITDEL   0                                           // размер задержки при старте в миллисекундах
-
-  #define INITSSID  "Xep_BaM_a_He_uHTepHeT"   // ssid при старте
-  #define INITPASS  "453525251505"    // pass при старте
   
 uint16_t meshdelay;                                             // Timer for the notamesh. Works with INITDEL.
 
@@ -177,8 +177,8 @@ uint8_t demorun = DEMO_MODE;                                    // 0 = regular m
 String ssid = INITSSID;
 String pass = INITPASS;
 
-const char* ap_ssid = "ESP Light";
-const char* ap_pass = "andrey991994";
+const char* ap_ssid = AP_SSID;
+const char* ap_pass = AP_PASS;
 
 bool on_off = true;
 
@@ -755,7 +755,7 @@ void setup() {
     Serial.println("Connecting to WiFi");
   #endif
 
-  while ((WiFi.status() != WL_CONNECTED) && (abs(millis() - tempTime) <= 7000)) {
+  while ((WiFi.status() != WL_CONNECTED) && (abs(long(millis() - tempTime)) <= 7000)) {
     delay(500);
     #if LOG_ON == 1
       Serial.print(".");

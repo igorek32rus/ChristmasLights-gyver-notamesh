@@ -19,7 +19,7 @@ const char MAIN_page[] PROGMEM = R"=====(
     ${indexHtml}
 )=====";`
 
-const filePath = path.join(__dirname, '../mainPage.h');
+const filePath = path.join(__dirname, '../_main/mainPage.h');
 
 fs.writeFile(filePath, outputData, function(error){
     if(error) throw error; // если возникла ошибка
