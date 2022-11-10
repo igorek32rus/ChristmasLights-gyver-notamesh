@@ -29,7 +29,9 @@
 #endif
 
 #if   IR_ON == 1
-  #include "IRremote.h"                                         // 
+  #include <IRremoteESP8266.h>
+  #include <IRrecv.h>
+  #include <IRutils.h>
 #endif
 
 #if   KEY_GYVER_ON > 0
@@ -985,7 +987,7 @@ void loop() {
   #endif
 
   #if IR_ON == 1
-    while (!irrecv.isIdle());                                                   // if not idle, wait till complete
+    // while (!irrecv.isIdle());                                                   // if not idle, wait till complete
   
       if (irrecv.decode(&results)) {  
           /* respond to button */
@@ -1118,8 +1120,8 @@ void strobe_mode(uint8_t mode, bool mc){                   // mc stands for 'Mod
 //  case 42 .. 121: if(mc) {thisdelay=10; } running_fire(9,3,1); break;
     case 200: fill_solid(leds, MAX_LEDS, CRGB::Black); fill_solid(leds,NUM_LEDS,CRGB(255,255,255)); break;   //Зажеч гирлянду длинной NUM_LEDS (регулировка длинны гирлянды)
     case 201: fill_solid(leds, MAX_LEDS, CRGB::Black); fill_solid(leds,meshdelay,CRGB(255,255,255)); break;  //Зажеч гирлянду длинной meshdelay
-    case 220: fill_solid(leds, MAX_LEDS, CRGB::Black); fill_solid(leds,NUM_LEDS,CRGB(255,255,255));leds[0]=CRGB::Red; break;   //Зажеч гирлянду длинной NUM_LEDS (регулировка длинны гирлянды)
-    case 221: fill_solid(leds, MAX_LEDS, CRGB::Black); fill_solid(leds,NUM_LEDS,CRGB(255,255,255));leds[0]=CRGB::Green; break;   //Зажеч гирлянду длинной NUM_LEDS (регулировка длинны гирлянды)
+    case 220: fill_solid(leds, MAX_LEDS, CRGB::Black); fill_solid(leds,NUM_LEDS,CRGB(255,255,255)); break;   //Зажеч гирлянду длинной NUM_LEDS (регулировка длинны гирлянды)
+    case 221: fill_solid(leds, MAX_LEDS, CRGB::Black); fill_solid(leds,NUM_LEDS,CRGB(255,255,255)); break;   //Зажеч гирлянду длинной NUM_LEDS (регулировка длинны гирлянды)
     case 255: if(mc) {palchg=0; } fill_solid(leds, NUM_LEDS-TOP_LENGTH,  solid);break;     //Установить цвет
     default : 
               #if RUNNING_FIRE == 1

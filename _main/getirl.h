@@ -35,7 +35,8 @@ void getirl() {                                                   // This is the
         
         #if Command_Brightness_plus
           case Command_Brightness_plus :   //////////////////////////////////////////////////////////////////////////  Увеличить максимальную яркость и остановится если достигли максимума
-                                    max_bright = min((max_bright<5)? max_bright+1:max_bright/2*3,255); 
+                                    // max_bright = min((max_bright<5)? max_bright+1:max_bright/2*3,255); 
+                                    max_bright = max_bright + 10 > 255 ? 255 : max_bright + 10;
                                     LEDS.setBrightness(max_bright); 
                                     #if LOG_ON == 1
                                         Serial.print(F("Brightness+ ")); Serial.println(max_bright);
@@ -56,7 +57,8 @@ void getirl() {                                                   // This is the
 
         #if Command_Brightness_minus
           case Command_Brightness_minus :    /////////////////////////////////////////////////////////////////////////  Уменьшить максимальную яркость и остановится если достигли максимума
-                                    max_bright = max((max_bright<5)? max_bright-1:max_bright/3*2,1); 
+                                    // max_bright = max((max_bright<5)? max_bright-1:max_bright/3*2,1); 
+                                    max_bright = max_bright - 10 <= 0 ? 0 : max_bright - 10;
                                     LEDS.setBrightness(max_bright); 
                                     #if LOG_ON == 1
                                         Serial.print(F("Brightness- ")); Serial.println(max_bright);
@@ -301,6 +303,7 @@ void getirl() {                                                   // This is the
         #if Command_Previous_mode
           case Command_Previous_mode :          ///////////////////////////////////////////////////////////////////////////  Предыдущий эффект
                                     if (Protocol == 1) {          //отключить повтор
+                                          SetOff(demorun);
                                           #if CHANGE_ON == 1
                                             if (newMode>0)  SetMode(newMode-1);
                                             else            SetMode(maxMode-1);
@@ -336,6 +339,7 @@ void getirl() {                                                   // This is the
         #if Command_Next_mode
           case Command_Next_mode :              ///////////////////////////////////////////////////////////////////////////  Следующий эффект
                                     if (Protocol == 1) {          //отключить повтор
+                                          SetOff(demorun);
                                           #if CHANGE_ON == 1
                                             if (newMode >=(maxMode-1))  SetMode(0);
                                             else                      SetMode(newMode+1);
